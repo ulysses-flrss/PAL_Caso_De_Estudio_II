@@ -74,39 +74,13 @@ void registroVentas () {
 	
 
 void validacionOpciones (int opcionElegida, int primeraOpcion, int ultimaOpcion) {
-    if ( opcionElegida == 0) {
-          cin.clear();
-            cin.ignore();
-            cout<<"ERROR: OPCIÓN FUERA DE RANGO VÁLIDO \n";
-            cout<<"Presione ENTER e inténtelo de Nuevo...\n";
-
-            if (isWindows()) {
-                system("pause");
-                system("cls");
-            } else {
-                getch();
-                system("clear");
-            }
-    } else if (!(opcionElegida)) {
+if (!(opcionElegida) || (opcionElegida < primeraOpcion || opcionElegida > ultimaOpcion)) {
             cin.clear();
             cin.ignore();
-            cout<<"ERROR: CARACTER INGRESADO INVALIDO \n";
+            cout<<"ERROR: OPCION INVALIDA \n";
             cout<<"Presione ENTER e inténtelo de Nuevo...\n";
-
-            if (isWindows()) {
-                system("pause");
-                system("cls");
-            } else {
-                cin.ignore();
-                getch();
-                system("clear");
-            }
-        } else if (opcionElegida < primeraOpcion || opcionElegida > ultimaOpcion){
-            cin.clear();
+                
             cin.ignore();
-            cout<<"ERROR: OPCIÓN FUERA DE RANGO VÁLIDO \n";
-            cout<<"Presione ENTER e inténtelo de Nuevo...\n";
-
             if (isWindows()) {
                 system("pause");
                 system("cls");
@@ -114,7 +88,6 @@ void validacionOpciones (int opcionElegida, int primeraOpcion, int ultimaOpcion)
                 getch();
                 system("clear");
             }
-            //HASTA AQUI-----
         } 
 }
 
