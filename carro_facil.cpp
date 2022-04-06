@@ -24,8 +24,13 @@ Estas preguntas deben accederse por medio de un menú, y una opción para volver
 #endif
 using namespace std;
 
-void validacionOpciones (int opcionElegida, int primeraOpcion, int ultimaOpcion);
-bool isWindows ();
+//Declaracion de funciones
+    void ingresoRegistro ();
+    void validacionOpciones (int opcionElegida, int primeraOpcion, int ultimaOpcion);
+    bool isWindows ();
+    void registroVentas ();
+    
+//--------------------------
 int main () {
 
     setlocale(LC_ALL, "spanish");
@@ -34,25 +39,33 @@ int main () {
     float ventas[4][3];
     int menuOpc;
 
+
 	do {
-	
-	
         cout<<"\nBienvenido al sistema de Carro Facil.\n";
 		cout<<"1- Ingresar Registros de Ventas\n";
 		cout<<"2- Ver Registro de Ventas\n";
-		cout<<"3- Salir'\n";
-	    cout<<"Seleccione la opci?n requerida: \n";
+		cout<<"3- Salir\n";
+	    cout<<"Seleccione la opción requerida: \n";
 	    cin>>menuOpc;
 		
         if(!(menuOpc)){
         	validacionOpciones(menuOpc, 1, 3);
+        } else if (menuOpc == 3) {
+            break;
         } else {
             validacionOpciones(menuOpc, 1,3);
-			//menu(menuOpc);
+			if (menuOpc == 1) ingresoRegistro();
+            else if (menuOpc == 2) registroVentas();
         }
+    } while (menuOpc < 1 || menuOpc > 3);
+}
 
-        
-    } while (menuOpc < 1 || menuOpc > 6 || menuOpc != 6);
+void ingresoRegistro () {
+    cout<<"Entrando al INGRESO DE REGISTRO DE VENTAS";
+}
+
+void registroVentas () {
+    cout<<"Entrando a la VISUALIZACION DE REGISTRO DE VENTAS";
 }
 	
 	
@@ -61,11 +74,24 @@ int main () {
 	
 
 void validacionOpciones (int opcionElegida, int primeraOpcion, int ultimaOpcion) {
-    if (!(opcionElegida)) {
+    if ( opcionElegida == 0) {
+          cin.clear();
+            cin.ignore();
+            cout<<"ERROR: OPCIÓN FUERA DE RANGO VÁLIDO \n";
+            cout<<"Presione ENTER e inténtelo de Nuevo...\n";
+
+            if (isWindows()) {
+                system("pause");
+                system("cls");
+            } else {
+                getch();
+                system("clear");
+            }
+    } else if (!(opcionElegida)) {
             cin.clear();
             cin.ignore();
-            cout<<"ERROR: OPCI?N INV?LIDA \n";
-            cout<<"Presione ENTER e int?ntelo de Nuevo...\n";
+            cout<<"ERROR: CARACTER INGRESADO INVALIDO \n";
+            cout<<"Presione ENTER e inténtelo de Nuevo...\n";
 
             if (isWindows()) {
                 system("pause");
@@ -78,8 +104,8 @@ void validacionOpciones (int opcionElegida, int primeraOpcion, int ultimaOpcion)
         } else if (opcionElegida < primeraOpcion || opcionElegida > ultimaOpcion){
             cin.clear();
             cin.ignore();
-            cout<<"ERROR: OPCI?N INV?LIDA \n";
-            cout<<"Presione ENTER e int?ntelo de Nuevo...\n";
+            cout<<"ERROR: OPCIÓN FUERA DE RANGO VÁLIDO \n";
+            cout<<"Presione ENTER e inténtelo de Nuevo...\n";
 
             if (isWindows()) {
                 system("pause");
