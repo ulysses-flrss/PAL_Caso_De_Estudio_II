@@ -15,6 +15,9 @@ Estas preguntas deben accederse por medio de un menú, y una opción para volver
 
 #include <iostream>
 #include <conio.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 #ifdef __linux__
     #define OS 0
 #elif _WIN32
@@ -25,18 +28,20 @@ Estas preguntas deben accederse por medio de un menú, y una opción para volver
 using namespace std;
 
 //Declaracion de funciones
-    void ingresoRegistro ();
     void validacionOpciones (int opcionElegida, int primeraOpcion, int ultimaOpcion);
     bool isWindows ();
-    void registroVentas ();
+    void registrarVentas(float ventas[][3], int, int, string agencias[3], int);
+    void verRegistro ();
     
 //--------------------------
 int main () {
 
     setlocale(LC_ALL, "spanish");
-    int year;
-    string agenciaNombre[3] = {"Perisur", "Valle", "Lomas"};
-    float ventas[4][3];
+    const int NFILAS = 4;
+    const int NCOL = 3;
+    const int nspace = 3;
+    string agencias[nspace] = {"Perisur", "Valle", "Lomas"};
+    float ventas[NFILAS][NCOL];
     int menuOpc;
 
 
@@ -54,68 +59,40 @@ int main () {
             break;
         } else {
             validacionOpciones(menuOpc, 1,3);
-			if (menuOpc == 1) ingresoRegistro();
-            else if (menuOpc == 2) registroVentas();
+			if (menuOpc == 1) registrarVentas(ventas, NFILAS, NCOL, agencias, nspace);
+            else if (menuOpc == 2) verRegistro();
         }
     } while (menuOpc < 1 || menuOpc > 3);
 }
 
-void ingresoRegistro () {
+void registrarVentas(int ventas[][3], int nfilas, int ncol, string agencias[3], int nspace){
+	cout << "�En qu� agencia desea ingresar los datos?\n\n" << endl;
+	cout << "1. " << agencias[0] << "\n\n" << endl;
+	cout << "2. " << agencias[1] << "\n\n" << endl;
+	cout << "3. " << agencias[2] << "\n\n" << endl;
+	cout << "4. Regresar\n\n" << endl;
+}
+
+void verRegistro () {
     cout<<"Entrando al INGRESO DE REGISTRO DE VENTAS";
 }
 
-void registroVentas () {
-    cout<<"Entrando a la VISUALIZACION DE REGISTRO DE VENTAS";
-}
-	
-	
-	
-
-	
-
 void validacionOpciones (int opcionElegida, int primeraOpcion, int ultimaOpcion) {
-    if ( opcionElegida == 0) {
-          cin.clear();
-            cin.ignore();
-            cout<<"ERROR: OPCIÓN FUERA DE RANGO VÁLIDO \n";
-            cout<<"Presione ENTER e inténtelo de Nuevo...\n";
-
-            if (isWindows()) {
-                system("pause");
-                system("cls");
-            } else {
-                getch();
-                system("clear");
-            }
-    } else if (!(opcionElegida)) {
-            cin.clear();
-            cin.ignore();
-            cout<<"ERROR: CARACTER INGRESADO INVALIDO \n";
-            cout<<"Presione ENTER e inténtelo de Nuevo...\n";
-
-            if (isWindows()) {
-                system("pause");
-                system("cls");
-            } else {
-                cin.ignore();
-                getch();
-                system("clear");
-            }
-        } else if (opcionElegida < primeraOpcion || opcionElegida > ultimaOpcion){
-            cin.clear();
-            cin.ignore();
-            cout<<"ERROR: OPCIÓN FUERA DE RANGO VÁLIDO \n";
-            cout<<"Presione ENTER e inténtelo de Nuevo...\n";
-
-            if (isWindows()) {
-                system("pause");
-                system("cls");
-            } else {
-                getch();
-                system("clear");
-            }
-            //HASTA AQUI-----
-        } 
+	if (!(opcionElegida) || (opcionElegida < primeraOpcion) || (opcionElegida > ultimaOpcion)) {
+        cin.clear();
+        cin.ignore();
+        cout<<"ERROR: OPCION INVALIDA \n";
+        cout<<"Presione ENTER e int�ntelo de Nuevo...\n";
+                
+        cin.ignore();
+        if (isWindows()) {
+            system("pause");
+            system("cls");
+        } else {
+            getch();
+            system("clear");
+        }
+    } 
 }
 
 bool isWindows () {
@@ -125,6 +102,3 @@ bool isWindows () {
         return  true;
     }
 }
-
-
-
