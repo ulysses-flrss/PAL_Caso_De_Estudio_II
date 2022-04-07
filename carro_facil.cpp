@@ -102,7 +102,11 @@ int main () {
 void registrarVentas(double ventas[][3], int nfilas, int ncol, string agencias[3], int nspace){
 	int opc;
 	do{
+<<<<<<< Updated upstream
 		cout << "ï¿½En quï¿½ agencia desea ingresar los datos?\n" << endl;
+=======
+		cout << "¿En qué agencia desea ingresar los datos?" << endl;
+>>>>>>> Stashed changes
 		cout << "1. " << agencias[0] << endl;
 		cout << "2. " << agencias[1] << endl;
 		cout << "3. " << agencias[2] << endl;
