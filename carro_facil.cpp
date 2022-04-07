@@ -46,7 +46,9 @@ int main () {
 		cout<<"2- Ver Registro de Ventas\n";
 		cout<<"3- Salir\n";
 	    cout<<"Seleccione la opción requerida: \n";
-	    cin>>menuOpc;
+	    menuOpc = getche();
+        cout<<endl;
+        cout<<menuOpc;
 		
         if(!(menuOpc)){
         	validacionOpciones(menuOpc, 1, 3);
@@ -92,10 +94,10 @@ if (!(opcionElegida) || (opcionElegida < primeraOpcion || opcionElegida > ultima
 }
 
 bool isWindows () {
-    if (OS == 0) {
+    if (OS == 1) {
+        return true;
+    } else {
         return false;
-    } else if(OS == 1) {
-        return  true;
     }
 }
 
