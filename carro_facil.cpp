@@ -30,7 +30,7 @@ using namespace std;
 //Declaracion de funciones
     void validacionOpciones (int opcionElegida, int primeraOpcion, int ultimaOpcion);
     bool isWindows ();
-    void registrarVentas(float ventas[][3], int, int, string agencias[3], int);
+    void registrarVentas(double ventas[][3], int, int, string agencias[3], int);
     void verRegistro ();
     
 //--------------------------
@@ -41,7 +41,7 @@ int main () {
     const int NCOL = 3;
     const int nspace = 3;
     string agencias[nspace] = {"Perisur", "Valle", "Lomas"};
-    float ventas[NFILAS][NCOL];
+    double ventas[NFILAS][NCOL];
     int menuOpc;
 
 
@@ -65,11 +65,11 @@ int main () {
     } while (menuOpc < 1 || menuOpc > 3);
 }
 
-void registrarVentas(int ventas[][3], int nfilas, int ncol, string agencias[3], int nspace){
-	cout << "¿En qué agencia desea ingresar los datos?\n\n" << endl;
-	cout << "1. " << agencias[0] << "\n\n" << endl;
-	cout << "2. " << agencias[1] << "\n\n" << endl;
-	cout << "3. " << agencias[2] << "\n\n" << endl;
+void registrarVentas(double ventas[][3], int nfilas, int ncol, string agencias[3], int nspace){
+	cout << "¿En qué agencia desea ingresar los datos?\n" << endl;
+	cout << "1. " << agencias[0] << endl;
+	cout << "2. " << agencias[1] << endl;
+	cout << "3. " << agencias[2] << endl;
 	cout << "4. Regresar\n\n" << endl;
 }
 
