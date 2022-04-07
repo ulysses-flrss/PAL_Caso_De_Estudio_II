@@ -34,16 +34,50 @@ using namespace std;
     void verRegistro ();
     
 //--------------------------
+
+struct Agencia {
+    char nombre [15];
+    double ventasT1;
+    double ventasT2;
+    double ventasT3;
+    double ventasT4;
+
+    Agencia() {
+        char nombre = ' ';
+        double ventasT1 = 0;
+        double ventasT2 = 0;
+        double ventasT3 = 0;
+        double ventasT4 = 0;
+    }//Como quieras xD,va pverao, quiero hacer una pruebita xD
+    
+    // métodos
+    void ingresarRegistro(char nombreA[]){
+        nombre = nombreA; //No sé xq sale así el nombre xD
+        cout << "Ingrese en dólares, las ventas totales del primer trimestre del año: $";
+        cin >> ventasT1;
+        cout << "Ingrese en dólares, las ventas totales del segundo trimestre del año: $";
+        cin >> ventasT2;
+        cout << "Ingrese en dólares, las ventas totales del tercer trimestre del año: $";
+        cin >> ventasT3;
+        cout << "Ingrese en dólares, las ventas totales del cuarto trimestre del año: $";
+        cin >> ventasT4;
+    }
+};
+
 int main () {
-
+    bool existen = false;
     setlocale(LC_ALL, "spanish");
-    const int NFILAS = 4;
-    const int NCOL = 3;
-    const int nspace = 3;
-    string agencias[nspace] = {"Perisur", "Valle", "Lomas"};
-    double ventas[NFILAS][NCOL];
-    int menuOpc;
+        const int NFILAS = 4;
+        const int NCOL = 3;
+        const int nspace = 3;
+        string agencias[nspace] = {"Perisur", "Valle", "Lomas"};
+        double ventas[NFILAS][NCOL];
+        int menuOpc;
+    
 
+
+    
+    
 
 	do {
         cout<<"\nBienvenido al sistema de Carro Facil.\n";
@@ -68,12 +102,12 @@ int main () {
 void registrarVentas(double ventas[][3], int nfilas, int ncol, string agencias[3], int nspace){
 	int opc;
 	do{
-		cout << "�En qu� agencia desea ingresar los datos?\n" << endl;
+		cout << "�En qu� agencia desea ingresar los datos?\n" << endl;
 		cout << "1. " << agencias[0] << endl;
 		cout << "2. " << agencias[1] << endl;
 		cout << "3. " << agencias[2] << endl;
 		cout << "4. Regresar" << endl;
-		cout << "Ingrese la opci�n que desee" << endl;
+		cout << "Ingrese la opci�n que desee" << endl;
 		cin >> opc;
 		
 		if(!(opc)){
@@ -109,7 +143,7 @@ void validacionOpciones (int opcionElegida, int primeraOpcion, int ultimaOpcion)
         cin.clear();
         cin.ignore();
         cout<<"ERROR: OPCION INVALIDA \n";
-        cout<<"Presione ENTER e int�ntelo de Nuevo...\n";
+        cout<<"Presione ENTER e int�ntelo de Nuevo...\n";
                 
         cin.ignore();
         if (isWindows()) {
