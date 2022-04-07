@@ -66,11 +66,38 @@ int main () {
 }
 
 void registrarVentas(double ventas[][3], int nfilas, int ncol, string agencias[3], int nspace){
-	cout << "¿En qué agencia desea ingresar los datos?\n" << endl;
-	cout << "1. " << agencias[0] << endl;
-	cout << "2. " << agencias[1] << endl;
-	cout << "3. " << agencias[2] << endl;
-	cout << "4. Regresar\n\n" << endl;
+	int opc;
+	do{
+		cout << "¿En qué agencia desea ingresar los datos?\n" << endl;
+		cout << "1. " << agencias[0] << endl;
+		cout << "2. " << agencias[1] << endl;
+		cout << "3. " << agencias[2] << endl;
+		cout << "4. Regresar" << endl;
+		cout << "Ingrese la opción que desee" << endl;
+		cin >> opc;
+		
+		if(!(opc)){
+			validacionOpciones(opc, 1, 4);
+		}
+		switch (opc){
+			case 1:
+				cout << agencias[0];
+			break;
+			
+			case 2:
+				cout << agencias[1];
+			break;
+			
+			case 3:
+				cout << agencias[2];
+			break;
+			
+			case 4:
+				main();
+			break;
+		}
+	}while (opc < 1 || opc > 4);
+		
 }
 
 void verRegistro () {
