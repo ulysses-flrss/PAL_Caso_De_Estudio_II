@@ -281,11 +281,16 @@ void validacionVentas (double ventas) {
 
 void respuestas(){
         cout << "¿Cuál fue el total anual de ventas de la agencia Lomas?\n";
-        cout<< ventasAnualesLomas();
+        cout<< ventasAnualesLomas()<<endl<<endl;
         
-        cout << "¿Cuál fue el promedio de ventas de Carro Fácil en el segundo trimestre del año?\n\n";
-        cout << "¿Cuáles agencias superaron el promedio de ventas del tercer trimestre?\n\n";
-        cout << "¿En qué trimestre se registraron las menores ventas del año, considerando a todas las agencias?\n\n";
+        cout << "¿Cuál fue el promedio de ventas de Carro Fácil en el segundo trimestre del año?\n";
+        cout<<promedioSegundoTrimestre()<<endl<<endl;
+
+        cout << "¿Cuáles agencias superaron el promedio de ventas del tercer trimestre?\n";
+        promedioSegundoTrimestre();
+
+        cout << "¿En qué trimestre se registraron las menores ventas del año, considerando a todas las agencias?\n";
+        menoresVentas();
     }
 
 
@@ -299,7 +304,15 @@ double promedioSegundoTrimestre () {
 }
 
 void promedioSuperadoTercer () {
+    double promedioTr3 = (perisur.ventasT3 + valle.ventasT3 + lomas.ventasT3)/3
 
+    if (perisur.ventasT3 > promedioTr3) {
+
+    } else if (valle.ventasT3 > promedioTr3) {
+
+    } else if (lomas.ventasT3 > promedioTr3) {
+
+    }
 }
 
 void menoresVentas () {
