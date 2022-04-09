@@ -30,10 +30,12 @@ using namespace std;
 //Declaracion de funciones
     void validacionOpciones (int opcionElegida, int primeraOpcion, int ultimaOpcion);
     bool isWindows ();
-    void registrarVentas(/*double ventas[][3], int, int, char agencias[4], int*/);
+    void registrarVentas(int opcion);
     void verRegistro ();
     void variables();
     void menu();
+    void subMenu_registrarVentas ();
+    void validacionVentas(int ventas);
     
 //--------------------------
 
@@ -99,13 +101,13 @@ void menu () {
             break;
         } else {
             validacionOpciones(menuOpc, 1,3);
-			if (menuOpc == 1) registrarVentas();
+			if (menuOpc == 1) subMenu_registrarVentas();
             else if (menuOpc == 2) verRegistro();
         }
     } while (menuOpc < 1 || menuOpc > 3);
 }
 
-void registrarVentas(/*double ventas[][3], int nfilas, int ncol, char agencias[3], int nspace*/){
+void subMenu_registrarVentas(){
 	int opc;
 	do{
 		cout << "?En qu? agencia desea ingresar los datos?\n" << endl;
@@ -118,12 +120,20 @@ void registrarVentas(/*double ventas[][3], int nfilas, int ncol, char agencias[3
 		
 		if(!(opc)){
 			validacionOpciones(opc, 1, 4);
-		}
-		switch (opc){
+		} else {
+            validacionOpciones(opc, 1, 4);
+            registrarVentas(opc);
+        }	
+        } while (opc < 1 || opc > 4);
+}
+
+void registrarVentas(int opcion) {
+    switch (opcion){
 			case 1: {
 				Agencia perisur;
 				cout << "Ingrese las ventas totales (en dólares) del Trimestre 1:\n";cin>>perisur.ventasT1;
 				cout << "\n\nVentas totales: "<<perisur.ventasT1;
+                validacionVentas(perisur.ventasT1);
 
             }
 			break;
@@ -135,7 +145,6 @@ void registrarVentas(/*double ventas[][3], int nfilas, int ncol, char agencias[3
 			
 			case 3: {
 				Agencia lomas;
-
             }
 			break;
 			
@@ -144,8 +153,6 @@ void registrarVentas(/*double ventas[][3], int nfilas, int ncol, char agencias[3
             }
 			break;
 		}
-	}while (opc < 1 || opc > 4);
-		
 }
 
 void verRegistro () {
@@ -177,6 +184,16 @@ bool isWindows () {
         return  true;
     }
 }
+
+void validacionVentas (double ventas) {
+    while (!(ventas) || ventas < 0) {
+        cout << "Ingrese las ventas totales (en dólares) del Trimestre 1:\n";
+        cin.ignore();
+        cin.clear();
+        cout<<"ERROR: DEBE INGRESAR UN NUMERO, ESTE DEBE SER POSITIVO\n";
+    }
+}
+
 void respuestas(){
         cout << "¿Cuál fue el total anual de ventas de la agencia Lomas?\n\n";
         cout << "¿Cuál fue el promedio de ventas de Carro Fácil en el segundo trimestre del año?\n\n";
