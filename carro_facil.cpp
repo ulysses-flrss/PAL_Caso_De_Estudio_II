@@ -105,7 +105,7 @@ void registrarVentas(double ventas[][3], int nfilas, int ncol, string agencias[3
 <<<<<<< Updated upstream
 		cout << "�En qu� agencia desea ingresar los datos?\n" << endl;
 =======
-		cout << "�En qu� agencia desea ingresar los datos?" << endl;
+		cout << "�En qu� agencia desea ingresar los datos?" << endl;
 >>>>>>> Stashed changes
 		cout << "1. " << agencias[0] << endl;
 		cout << "2. " << agencias[1] << endl;
@@ -167,3 +167,9 @@ bool isWindows () {
         return  true;
     }
 }
+void respuestas(){
+ cout << "¿Cuál fue el total anual de ventas de la agencia Lomas?\n\n";
+        cout << "¿Cuál fue el promedio de ventas de Carro Fácil en el segundo trimestre del año?\n\n";
+        cout << "¿Cuáles agencias superaron el promedio de ventas del tercer trimestre?\n\n";
+        cout << "¿En qué trimestre se registraron las menores ventas del año, considerando a todas las agencias?\n\n";
+    }
