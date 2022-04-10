@@ -1,10 +1,6 @@
 /*
-La empresa automotriz Carro Fácil tiene 3 agencias y cuenta con la información acerca de los montos (en dólares) de las ventas trimestrales de automóviles alcanzadas el por año por cada una de éstas. A partir de estos datos la empresa construyó la siguiente matriz de ventas:
-Agenc¡a>>	Perisur	Valle	Lomas
-Trimestre 1			
-Trimestre 2			
-Trimestre 3			
-Trimestre 4			
+La empresa automotriz Carro Fácil tiene 3 agencias y cuenta con la información acerca de los montos (en dólares) de las ventas trimestrales de automóviles alcanzadas el por año por cada una de éstas. 
+
 El programa pedir el año de ventas a ingresar y luego permite ingresar apropiadamente los valores de la matriz anterior. Luego, debe mostrar las respuestas a las siguientes preguntas:
 a)	¿Cuál fue el total anual de ventas de la agencia Lomas?
 b)	¿Cuál fue el promedio de ventas de Carro Fácil en el segundo trimestre del año?
@@ -15,9 +11,6 @@ Estas preguntas deben accederse por medio de un menú, y una opción para volver
 
 #include <iostream>
 #include <conio.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #ifdef __linux__
     #define OS 0
 #elif _WIN32
@@ -32,7 +25,6 @@ using namespace std;
     bool isWindows ();
     void registrarVentas(int opcion);
     void verRegistro ();
-    void variables();
     void menu();
     void subMenu_registrarVentas ();
     void validacionVentas(float ventas);
@@ -55,43 +47,19 @@ struct Agencia {
         float ventasT2 = 0;
         float ventasT3 = 0;
         float ventasT4 = 0;
-    } 
+    }//constructor 
     
-    // métodos
-    void ingresarRegistro(char nombreA[]){
-        //nombre = nombreA; //No sé xq sale así el nombre xD
-        cout << "Ingrese en dólares, las ventas totales del primer trimestre del año: $";
-        cin >> ventasT1;
-        cout << "Ingrese en dólares, las ventas totales del segundo trimestre del año: $";
-        cin >> ventasT2;
-        cout << "Ingrese en dólares, las ventas totales del tercer trimestre del año: $";
-        cin >> ventasT3;
-        cout << "Ingrese en dólares, las ventas totales del cuarto trimestre del año: $";
-        cin >> ventasT4;
-    }
 }   perisur,
     valle,
     lomas;
 
 int main () {
     setlocale(LC_ALL, "spanish");
-	variables();
     menu();
 }
-
-void variables () {
-    bool existen = false;
-    const int NFILAS = 4;
-    const int NCOL = 3;
-    const int nspace = 3;
-    //float ventas[NFILAS][NCOL];
-    int menuOpc;
-}
-
 void menu () {
     int menuOpc;
-    const int nspace = 4;
-    
+
     do {
         cout<<"\nBienvenido al sistema de Carro Facil.\n";
 		cout<<"1- Ingresar Registros de Ventas\n";
@@ -116,12 +84,12 @@ void subMenu_registrarVentas(){
 	int opc;
     
 	do{
-		cout << "?En qu? agencia desea ingresar los datos?\n" << endl;
+		cout << "En qué agencia desea ingresar los datos?\n" << endl;
 		cout << "1.  Agencia Perisur" << endl;
 		cout << "2.  Agencia Valle" << endl;
 		cout << "3.  Agencia Lomas" << endl;
 		cout << "4. Regresar al menú anterior" << endl;
-		cout << "Ingrese la opci?n que desee" << endl;
+		cout << "Ingrese la opción que desee" << endl;
 		cin >> opc;
 		
 		if(!(opc)){
