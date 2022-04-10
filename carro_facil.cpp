@@ -35,25 +35,26 @@ using namespace std;
     void variables();
     void menu();
     void subMenu_registrarVentas ();
-    void validacionVentas(double ventas);
-    double ventasAnualesLomas ();
-    double promedioSegundoTrimestre ();
+    void validacionVentas(float ventas);
+    float ventasAnualesLomas ();
+    float promedioSegundoTrimestre ();
     void promedioSuperadoTercer ();
     void menoresVentas ();
+    void respuestas();
     
 //--------------------------
 
 struct Agencia {
-    double ventasT1;
-    double ventasT2;
-    double ventasT3;
-    double ventasT4;
+    float ventasT1;
+    float ventasT2;
+    float ventasT3;
+    float ventasT4;
 
     Agencia() {
-        double ventasT1 = 0;
-        double ventasT2 = 0;
-        double ventasT3 = 0;
-        double ventasT4 = 0;
+        float ventasT1 = 0;
+        float ventasT2 = 0;
+        float ventasT3 = 0;
+        float ventasT4 = 0;
     } 
     
     // métodos
@@ -83,7 +84,7 @@ void variables () {
     const int NFILAS = 4;
     const int NCOL = 3;
     const int nspace = 3;
-    //double ventas[NFILAS][NCOL];
+    //float ventas[NFILAS][NCOL];
     int menuOpc;
 }
 
@@ -113,6 +114,7 @@ void menu () {
 
 void subMenu_registrarVentas(){
 	int opc;
+    
 	do{
 		cout << "?En qu? agencia desea ingresar los datos?\n" << endl;
 		cout << "1.  Agencia Perisur" << endl;
@@ -135,89 +137,83 @@ void registrarVentas(int opcion) {
     switch (opcion){
 			case 1: {
                 
-                do {
                     cout<<"AGENCIA PERISUR\n";
+                do {
                     cout <<"Ingrese las ventas totales (en dólares) del Trimestre 1:\n";cin>>perisur.ventasT1;
                     validacionVentas(perisur.ventasT1);
                 } while (perisur.ventasT1 <= 0);
 
                 do {
-                    cout<<"AGENCIA PERISUR\n";
                     cout <<"Ingrese las ventas totales (en dólares) del Trimestre 2:\n";cin>>perisur.ventasT2;
                     validacionVentas(perisur.ventasT2);
                 } while (perisur.ventasT2 <= 0);
 
                 do {
-                    cout<<"AGENCIA PERISUR\n";
                     cout <<"Ingrese las ventas totales (en dólares) del Trimestre 3:\n";cin>>perisur.ventasT3;
                     validacionVentas(perisur.ventasT3);
                 } while (perisur.ventasT3 <= 0);
 
                 do {
-                    cout<<"AGENCIA PERISUR\n";
                     cout <<"Ingrese las ventas totales (en dólares) del Trimestre 4:\n";cin>>perisur.ventasT4;
                     validacionVentas(perisur.ventasT4);
                 } while (perisur.ventasT4 <= 0);
                     
 
+            subMenu_registrarVentas();
             }
 			break;
 			
 			case 2: {
 				
-                do {
                     cout<<"AGENCIA VALLE\n";
+                do {
                     cout <<"Ingrese las ventas totales (en dólares) del Trimestre 1:\n";cin>>valle.ventasT1;
                     validacionVentas(valle.ventasT1);
                 } while (valle.ventasT1 <= 0);
 
                 do {
-                    cout<<"AGENCIA VALLE\n";
                     cout <<"Ingrese las ventas totales (en dólares) del Trimestre 2:\n";cin>>valle.ventasT2;
                     validacionVentas(valle.ventasT2);
                 } while (valle.ventasT2 <= 0);
 
                 do {
-                    cout<<"AGENCIA VALLE\n";
                     cout <<"Ingrese las ventas totales (en dólares) del Trimestre 3:\n";cin>>valle.ventasT3;
                     validacionVentas(valle.ventasT3);
                 } while (valle.ventasT3 <= 0);
 
                 do {
-                    cout<<"AGENCIA VALLE\n";
                     cout <<"Ingrese las ventas totales (en dólares) del Trimestre 4:\n";cin>>valle.ventasT4;
                     validacionVentas(valle.ventasT4);
                 } while (valle.ventasT4 <= 0);
                     
 
+            subMenu_registrarVentas();
             }
 			break;
 			
 			case 3: {
 				
-                do {
                     cout<<"AGENCIA LOMAS\n";
+                do {
                     cout <<"Ingrese las ventas totales (en dólares) del Trimestre 1:\n";cin>>lomas.ventasT1;
                     validacionVentas(lomas.ventasT1);
                 } while (lomas.ventasT1 <= 0);
 
                 do {
-                    cout<<"AGENCIA LOMAS\n";
                     cout <<"Ingrese las ventas totales (en dólares) del Trimestre 2:\n";cin>>lomas.ventasT2;
                     validacionVentas(lomas.ventasT2);
                 } while (lomas.ventasT2 <= 0);
 
                 do {
-                    cout<<"AGENCIA LOMAS\n";
                     cout <<"Ingrese las ventas totales (en dólares) del Trimestre 3:\n";cin>>lomas.ventasT3;
                     validacionVentas(lomas.ventasT3);
                 } while (lomas.ventasT3 <= 0);
 
                 do {
-                    cout<<"AGENCIA LOMAS\n";
                     cout <<"Ingrese las ventas totales (en dólares) del Trimestre 4:\n";cin>>lomas.ventasT4;
                     validacionVentas(lomas.ventasT4);
                 } while (lomas.ventasT4 <= 0);
+            subMenu_registrarVentas();
             }
 			break;
 			
@@ -226,10 +222,14 @@ void registrarVentas(int opcion) {
             }
 			break;
 		}
+
+
+
+
 }
 
 void verRegistro () {
-    cout<<"Entrando al INGRESO DE REGISTRO DE VENTAS";
+    respuestas();
 }
 
 void validacionOpciones (int opcionElegida, int primeraOpcion, int ultimaOpcion) {
@@ -258,7 +258,7 @@ bool isWindows () {
     }
 }
 
-void validacionVentas (double ventas) {
+void validacionVentas (float ventas) {
     if (!(ventas) && ventas != 0) {
         cin.ignore();
         cin.clear();
@@ -280,41 +280,69 @@ void validacionVentas (double ventas) {
 }
 
 void respuestas(){
-        cout << "¿Cuál fue el total anual de ventas de la agencia Lomas?\n";
-        cout<< ventasAnualesLomas()<<endl<<endl;
+        cout << "\n¿Cuál fue el total anual de ventas de la agencia Lomas?\n";
+        cout<<"$"<< ventasAnualesLomas()<<endl<<endl;
         
         cout << "¿Cuál fue el promedio de ventas de Carro Fácil en el segundo trimestre del año?\n";
-        cout<<promedioSegundoTrimestre()<<endl<<endl;
+        cout<<"$"<<promedioSegundoTrimestre()<<endl<<endl;
 
         cout << "¿Cuáles agencias superaron el promedio de ventas del tercer trimestre?\n";
-        promedioSegundoTrimestre();
+        promedioSuperadoTercer();
+        cout<<endl<<endl;
 
         cout << "¿En qué trimestre se registraron las menores ventas del año, considerando a todas las agencias?\n";
         menoresVentas();
+        cout<<endl<<endl;
     }
 
 
-double ventasAnualesLomas () {
+float ventasAnualesLomas () {
     return lomas.ventasT1 + lomas.ventasT2 + lomas.ventasT3 + lomas.ventasT4;
 
 }
 
-double promedioSegundoTrimestre () {
+float promedioSegundoTrimestre () {
     return (perisur.ventasT2 + valle.ventasT2 + lomas.ventasT2)/3;
 }
 
 void promedioSuperadoTercer () {
-    double promedioTr3 = (perisur.ventasT3 + valle.ventasT3 + lomas.ventasT3)/3
+    float promedioTr3 = (perisur.ventasT3 + valle.ventasT3 + lomas.ventasT3)/3;
 
     if (perisur.ventasT3 > promedioTr3) {
-
-    } else if (valle.ventasT3 > promedioTr3) {
-
-    } else if (lomas.ventasT3 > promedioTr3) {
-
+        cout<<"- Perisur \n";
+    } else {
+        cout<<"-\n";
+    }
+    
+    if (valle.ventasT3 > promedioTr3) {
+        cout<<"- Valle \n";
+    }  else {
+        cout<<"-\n";
+    } 
+    
+    if (lomas.ventasT3 > promedioTr3) {
+        cout<<"- Lomas \n";
+    }  else {
+        cout<<"-";
     }
 }
 
 void menoresVentas () {
+    float sumaTr1 = perisur.ventasT1 + valle.ventasT1 + lomas.ventasT1;
+    float sumaTr2 = perisur.ventasT2 + valle.ventasT2 + lomas.ventasT2;
+    float sumaTr3 = perisur.ventasT3 + valle.ventasT3 + lomas.ventasT3;
+    float sumaTr4 = perisur.ventasT4 + valle.ventasT4 + lomas.ventasT4;
 
+
+    if (sumaTr1 < sumaTr2 && sumaTr1 < sumaTr3 && sumaTr1 < sumaTr4) {
+        cout<<"Trimestre 1";
+    } else if (sumaTr2 < sumaTr1 && sumaTr2 < sumaTr3 && sumaTr2 < sumaTr4) {
+        cout<<"Trimestre 2";
+    } else if (sumaTr3 < sumaTr1 && sumaTr3 < sumaTr2 && sumaTr3 < sumaTr4) {
+        cout<<"Trimestre 3";
+    } else if (sumaTr4 < sumaTr1 && sumaTr4 < sumaTr2 && sumaTr4 < sumaTr3) {
+        cout<<"Trimestre 4";
+    } else {
+        cout<<"Todas tiene la misma suma o son iguales";
+    }
 }
